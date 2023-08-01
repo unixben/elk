@@ -52,10 +52,7 @@ const emit = defineEmits<{
   (event: 'close',): void
 }>()
 
-const { modelValue: visible } = defineModels<{
-  /** v-model dislog visibility */
-  modelValue: boolean
-}>()
+const visible = defineModel<boolean>({ required: true })
 
 const deactivated = useDeactivated()
 const route = useRoute()

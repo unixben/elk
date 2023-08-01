@@ -3,9 +3,7 @@ defineProps<{
   title?: string
   message: string
 }>()
-const { modelValue } = defineModels<{
-  modelValue: boolean
-}>()
+const modelValue = defineModel<boolean>()
 </script>
 
 <template>
