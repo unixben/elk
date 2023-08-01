@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   /** v-model dialog visibility */
-  (event: 'close',): void
+  (event: 'close'): void
 }>()
 
 const visible = defineModel<boolean>({ required: true })
@@ -77,6 +77,8 @@ defineExpose({
 
 /** close the dialog */
 function close() {
+  if (!visible.value)
+    return
   visible.value = false
   emit('close')
 }
