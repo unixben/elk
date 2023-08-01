@@ -3,7 +3,7 @@ defineProps<{
   title?: string
   message: string
 }>()
-const modelValue = defineModel<boolean>()
+const modelValue = defineModel<boolean>({ required: true })
 </script>
 
 <template>

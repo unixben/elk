@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
 
-const modelValue = defineModel<string>()
+const modelValue = defineModel<string>({ required: true })
 
 const { t } = useI18n()
 const userSettings = useUserSettings()

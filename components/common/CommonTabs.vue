@@ -8,7 +8,7 @@ const { options, command } = defineProps<{
   command?: boolean
 }>()
 
-const modelValue = defineModel<string>()
+const modelValue = defineModel<string>({ required: true })
 
 const tabs = $computed(() => {
   return options.map((option) => {

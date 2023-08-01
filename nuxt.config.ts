@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   macros: {
     setupSFC: true,
     betterDefine: false,
-    // defineModels: false,
+    defineModels: false,
   },
   devtools: {
     enabled: true,

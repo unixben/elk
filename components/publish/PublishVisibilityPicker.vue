@@ -3,7 +3,9 @@ const { editing } = defineProps<{
   editing?: boolean
 }>()
 
-const modelValue = defineModel<string>()
+const modelValue = defineModel<string>({
+  required: true,
+})
 
 const currentVisibility = $computed(() =>
   statusVisibilities.find(v => v.value === modelValue.value) || statusVisibilities[0],
