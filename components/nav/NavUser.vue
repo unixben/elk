@@ -24,8 +24,23 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
       flex="~ row"
       gap-x-1 items-center justify-center btn-solid text-sm px-2 py-1 xl:hidden
       :disabled="busy"
-      @click="oauth()"
+      @click="oauth('signup')"
     >
+      hey
+      <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
+        <span block i-ri:loader-2-fill aria-hidden="true" />
+      </span>
+      <span v-else aria-hidden="true" block i-ri:login-circle-line class="rtl-flip" />
+      {{ $t('action.sign_up') }}
+    </button>
+    <button
+      v-if="singleInstanceServer"
+      flex="~ row"
+      gap-x-1 items-center justify-center btn-solid text-sm px-2 py-1 xl:hidden
+      :disabled="busy"
+      @click="oauth('signin')"
+    >
+      hey
       <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
         <span block i-ri:loader-2-fill aria-hidden="true" />
       </span>

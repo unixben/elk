@@ -11,7 +11,7 @@ export function useSignIn(input?: Ref<HTMLInputElement | undefined>) {
   const server = ref('')
   const displayError = ref(false)
 
-  async function oauth() {
+  async function oauth(authIntent: 'login' | 'signup') {
     if (busy.value)
       return
 
@@ -27,7 +27,7 @@ export function useSignIn(input?: Ref<HTMLInputElement | undefined>) {
     try {
       let href: string
       if (singleInstanceServer) {
-        href = await (globalThis.$fetch as any)(`/api/${publicServer.value}/login`, {
+        href = await (globalThis.$fetch as any)(`/api/${publicServer.value}/${authIntent}`, {
           method: 'POST',
           body: {
             force_login: users.value.length > 0,

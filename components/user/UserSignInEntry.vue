@@ -9,14 +9,28 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
         <strong>{{ currentServer }}</strong>
       </i18n-t>
     </p>
+
     <p text-sm text-secondary>
       {{ $t(singleInstanceServer ? 'user.single_instance_sign_in_desc' : 'user.sign_in_desc') }}
     </p>
     <button
       v-if="singleInstanceServer"
-      flex="~ row" gap-x-2 items-center justify-center btn-solid text-center rounded-3
+      flex="~ row"
+      gap-x-2 items-center justify-center btn-solid text-center rounded-3
       :disabled="busy"
-      @click="oauth()"
+      @click="oauth('signup')"
+    >
+      <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
+        <span block i-ri:loader-2-fill aria-hidden="true" />
+      </span>
+      <span v-else aria-hidden="true" block i-ri:login-circle-line class="rtl-flip" />
+      {{ $t('action.sign_up') }}
+    </button>
+    <button
+      v-if="singleInstanceServer"
+      flex="~ row" gap-x-2 items-center justify-center btn-outline text-center rounded-3
+      :disabled="busy"
+      @click="oauth('login')"
     >
       <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
         <span block i-ri:loader-2-fill aria-hidden="true" />
