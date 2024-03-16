@@ -23,7 +23,6 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
       <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
         <span block i-ri:loader-2-fill aria-hidden="true" />
       </span>
-      <span v-else aria-hidden="true" block i-ri:login-circle-line class="rtl-flip" />
       {{ $t('action.sign_up') }}
     </button>
     <button
@@ -35,7 +34,6 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
       <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
         <span block i-ri:loader-2-fill aria-hidden="true" />
       </span>
-      <span v-else aria-hidden="true" block i-ri:login-circle-line class="rtl-flip" />
       {{ $t('action.sign_in') }}
     </button>
     <button v-else btn-solid rounded-3 text-center mt-2 select-none @click="openSigninDialog()">

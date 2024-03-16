@@ -162,7 +162,7 @@ export default defineNuxtConfig({
       // our default translation server #76
       translateApi: '',
       // Use the instance where Elk has its Mastodon account as the default
-      defaultServer: 'social.ayco.io',
+      defaultServer: 'mastodon.social',
       singleInstance: true,
     },
     storage: {
