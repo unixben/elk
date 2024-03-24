@@ -4,6 +4,8 @@ import { DynamicScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import type { mastodon } from 'masto'
 import type { UnwrapRef } from 'vue'
+// eslint-disable-next-line vue/prefer-import-from-vue
+import type { UnwrapRefSimple } from '@vue/reactivity'
 
 const {
   paginator,
@@ -66,7 +68,12 @@ function removeEntry(entryId: any) {
   items.value = items.value.filter(i => (i as any)[keyProp] !== entryId)
 }
 
-defineExpose({ createEntry, removeEntry, updateEntry })
+function sortEntries() {
+  if (preprocess)
+    items.value = (preprocess([...items.value as U[]])) as UnwrapRefSimple<U>[]
+}
+
+defineExpose({ createEntry, removeEntry, updateEntry, sortEntries })
 </script>
 
 <template>

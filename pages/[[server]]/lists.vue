@@ -21,6 +21,7 @@ const actionError = ref<string | undefined>(undefined)
 const busy = ref<boolean>(false)
 const createText = ref('')
 const enableSubmit = computed(() => createText.value.length > 0)
+const sortingType = ref<string>('title')
 
 async function createList() {
   if (busy.value || !enableSubmit.value)
@@ -62,6 +63,22 @@ function removeEntry(id: string) {
   paginatorRef.value?.removeEntry(id)
 }
 
+function sortLists(items: mastodon.v1.List[]) {
+  return items.toSorted(getComparisonFunction())
+}
+
+function getComparisonFunction(): ((l1: mastodon.v1.List, l2: mastodon.v1.List) => number) {
+  if (sortingType.value === 'title')
+    return (l1, l2) => l1.title.localeCompare(l2.title)
+  else
+    return (l1, l2) => l1.id > l2.id ? 1 : -1
+}
+
+function toggleSortingType() {
+  sortingType.value = sortingType.value === 'title' ? 'id' : 'title'
+  paginatorRef.value?.sortEntries()
+}
+
 onDeactivated(() => clearError(false))
 </script>
 
@@ -73,8 +90,17 @@ onDeactivated(() => clearError(false))
         <span text-lg font-bold>{{ t('nav.lists') }}</span>
       </NuxtLink>
     </template>
+    <template #actions>
+      <CommonTooltip :content="sortingType === 'title' ? 'Sorted by list name' : 'Sorted by creation time'" no-auto-focus>
+        <button
+          text-primary cursor-pointer m3
+          :class="sortingType === 'title' ? 'i-ri:sort-alphabet-asc' : 'i-ri:sort-desc'"
+          @click="toggleSortingType"
+        />
+      </CommonTooltip>
+    </template>
     <slot>
-      <CommonPaginator ref="paginatorRef" :paginator="paginator">
+      <CommonPaginator ref="paginatorRef" :paginator="paginator" :preprocess="sortLists">
         <template #default="{ item }">
           <ListEntry
             :model-value="item"
