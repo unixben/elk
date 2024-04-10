@@ -41,9 +41,9 @@
     "profile_personal_note": "個人メモ",
     "profile_unavailable": "プロフィールが利用できません",
     "reject": "フォローを拒否",
-    "rejected": "クエストを拒否しました",
+    "rejected": "リクエストを拒否しました",
     "request_follow": "フォローをリクエスト",
-    "requested": "{0} がフォローをリクエストしました",
+    "requested": "{0}さんがフォローをリクエストしました",
     "unblock": "ブロック解除",
     "unfollow": "フォロー解除",
     "unmute": "ミュート解除",
@@ -58,6 +58,7 @@
     "boost": "ブースト",
     "boost_count": "{0}",
     "boosted": "ブースト済み",
+    "clear": "クリア",
     "clear_publish_failed": "投稿エラーをクリア",
     "clear_save_failed": "保存エラーをクリア",
     "clear_upload_failed": "ファイルアップロードエラーをクリア",
@@ -72,8 +73,10 @@
     "favourited": "お気に入り済み",
     "more": "さらに表示",
     "next": "次へ",
+    "open_image_preview_dialog": "画像プレビューダイアログを開く",
     "prev": "前へ",
     "publish": "投稿",
+    "publish_thread": "スレッドを投稿",
     "reply": "返信",
     "reply_count": "{0}",
     "reset": "リセット",
@@ -127,7 +130,7 @@
     "block_domain": {
       "cancel": "キャンセル",
       "confirm": "ブロック",
-      "description": "{0}さんを本当にブロックしたいですか？",
+      "description": "{0}を本当にブロックしたいですか？",
       "title": "ドメインのブロック"
     },
     "common": {
@@ -137,7 +140,7 @@
     "delete_list": {
       "cancel": "キャンセル",
       "confirm": "削除",
-      "description": "リスト \"{0}\" を本当に削除したいですか？",
+      "description": "リスト「{0}」を本当に削除したいですか？",
       "title": "リストの削除"
     },
     "delete_posts": {
@@ -149,10 +152,10 @@
     "mute_account": {
       "cancel": "キャンセル",
       "confirm": "ミュート",
-      "days": "日|日|日",
+      "days": "日",
       "description": "{0}さんを本当にミュートしたいですか？",
-      "hours": "時間|時間|時間",
-      "minute": "分|分|分",
+      "hours": "時間",
+      "minute": "分",
       "notifications": "通知をミュート",
       "specify_duration": "ミュート期間を指定",
       "title": "アカウントのミュート"
@@ -220,6 +223,7 @@
     "error": "リストの作成中にエラーが発生しました",
     "error_prefix": "エラー: ",
     "list_title_placeholder": "リストのタイトル",
+    "manage": "リストの管理",
     "modify_account": "このアカウントでリストを編集",
     "remove_account": "アカウントをリストから削除",
     "save": "変更を保存"
@@ -233,6 +237,7 @@
         "compose": "投稿",
         "favourite": "お気に入り",
         "search": "検索",
+        "show_new_items": "新しい投稿/通知を表示する",
         "title": "アクション"
       },
       "media": {
@@ -241,7 +246,7 @@
       "navigation": {
         "go_to_bookmarks": "ブックマーク",
         "go_to_conversations": "会話",
-        "go_to_explore": "話題の投稿",
+        "go_to_explore": "探索する",
         "go_to_favourites": "お気に入り",
         "go_to_federated": "連合",
         "go_to_home": "ホーム",
@@ -305,7 +310,8 @@
     "built_at": "ビルド {0}",
     "compose": "投稿",
     "conversations": "会話",
-    "explore": "話題の投稿",
+    "docs": "ドキュメンテーション",
+    "explore": "探索する",
     "favourites": "お気に入り",
     "federated": "連合",
     "hashtags": "ハッシュタグ",
@@ -313,6 +319,7 @@
     "list": "リスト",
     "lists": "リスト",
     "local": "ローカル",
+    "more_menu": "その他のメニュー",
     "muted_users": "ミュートしたユーザー",
     "notifications": "通知",
     "privacy": "プライバシー",
@@ -447,6 +454,8 @@
       "label": "アカウント設定"
     },
     "interface": {
+      "bottom_nav": "下部のナビゲーション",
+      "bottom_nav_instructions": "好きなナビゲーションボタンを最大5個まで選択してください。「その他のメニュー」ボタンは必須項目です。",
       "color_mode": "カラーモード",
       "dark_mode": "ダークモード",
       "default": " (デフォルト)",
@@ -458,6 +467,7 @@
     },
     "language": {
       "display_language": "表示言語",
+      "how_to_contribute": "コントリビューションするには？",
       "label": "言語",
       "post_language": "投稿言語",
       "status": "翻訳状況: {0}/{1} ({2}%)",
@@ -511,9 +521,9 @@
         "unsupported": "あなたのブラウザはプッシュ通知をサポートしていません。",
         "warning": {
           "enable_close": "閉じる",
-          "enable_description": "Elkを開いていないときにも通知を受け取るには、プッシュ通知を有効にしてください。一度有効化すると、上の\"@:settings.notifications.show_btn{'\"'}ボタンで、プッシュ通知を行う種類のインタラクションを細かくコントロールできます。",
-          "enable_description_desktop": "Elkを開いていないときにも通知を受け取るには、プッシュ通知を有効にしてください。一度有効化すると、\"設定 > 通知 > プッシュ通知の設定\" から、プッシュ通知を行う種類のインタラクションを細かくコントロールできます。",
-          "enable_description_mobile": "また、ナビゲーションメニュー \"設定 > 通知 > プッシュ通知の設定\" を使用して設定をアクセスすることもできます。",
+          "enable_description": "Elkを開いていないときにも通知を受け取るには、プッシュ通知を有効にしてください。一度有効化すると、上の「@:settings.notifications.show_btn」ボタンで、プッシュ通知を行う種類のインタラクションを細かくコントロールできます。",
+          "enable_description_desktop": "Elkを開いていないときにも通知を受け取るには、プッシュ通知を有効にしてください。一度有効化すると、「設定 > 通知 > プッシュ通知の設定」から、プッシュ通知を行う種類のインタラクションを細かくコントロールできます。",
+          "enable_description_mobile": "また、ナビゲーションメニュー「設定 > 通知 > プッシュ通知の設定」を使用して設定をアクセスすることもできます。",
           "enable_description_settings": "Elkを開いていないときにも通知を受け取るには、プッシュ通知を有効にしてください。一度有効化すると、同じこの画面上でプッシュ通知を行う種類のインタラクションを細かくコントロールできます。",
           "enable_desktop": "プッシュ通知を有効にする",
           "enable_title": "Never miss anything",
@@ -526,7 +536,7 @@
     "notifications_settings": "通知",
     "preferences": {
       "embedded_media": "埋め込みメディアプレイヤー",
-      "embedded_media_description": "メディアストリーミングのリンクを展開するときに、通常のプレビューカードの代わりに、埋め込みのプレイヤーを表示します。",
+      "embedded_media_description": "共有されたメディアストリーミングのリンクを展開するときに、通常のプレビューカードの代わりに埋め込みプレイヤーを表示します。",
       "enable_autoplay": "自動再生を有効化",
       "enable_data_saving": "データセーバーを有効にする",
       "enable_data_saving_description": "添付の自動読み込みを防止してデータを節約します。",
@@ -535,12 +545,14 @@
       "github_cards_description": "GitHubリンクが投稿されたとき、ソーシャル画像の代わりにソーシャルグラフのメタデータを使用してアクセシブルなHTMLカードを表示します。",
       "grayscale_mode": "グレースケールモード",
       "hide_account_hover_card": "アカウントのホバーカードを隠す",
-      "hide_alt_indi_on_posts": "投稿上のalt表示を隠す",
+      "hide_alt_indi_on_posts": "投稿上のALT表示を隠す",
       "hide_boost_count": "ブーストの数を隠す",
       "hide_favorite_count": "お気に入りの数を隠す",
       "hide_follower_count": "フォロワーの数を隠す",
+      "hide_gif_indi_on_posts": "投稿上のGIF表示を隠す",
       "hide_news": "ニュースを隠す",
       "hide_reply_count": "リプライの数を隠す",
+      "hide_tag_hover_card": "タグホバーカードを隠す",
       "hide_translation": "翻訳を隠す",
       "hide_username_emojis": "ユーザー名の絵文字を隠す",
       "hide_username_emojis_description": "タイムライン上でユーザー名に含まれる絵文字を隠します。プロフィールでは絵文字は引き続き表示されます。",
@@ -589,7 +601,11 @@
   },
   "state": {
     "attachments_exceed_server_limit": "添付の数が投稿ごとの上限を超えています。",
+    "attachments_limit_audio_error": "音声の最大サイズを超えています: {0}",
     "attachments_limit_error": "投稿ごとの上限を超えています",
+    "attachments_limit_image_error": "画像の最大サイズを超えています: {0}",
+    "attachments_limit_unknown_error": "ファイルの最大サイズを超えています: {0}",
+    "attachments_limit_video_error": "動画の最大サイズを超えています: {0}",
     "edited": "(編集済み)",
     "editing": "編集中",
     "loading": "読込中...",
@@ -606,10 +622,11 @@
     },
     "boosted_by": "ブーストしたユーザー",
     "edited": "編集済み {0}",
-    "embedded_warning": "これを再生すると、IPアドレスが他のサービスに知られる可能性があります。",
+    "embedded_warning": "再生すると他のサービスにIPアドレスが知られる可能性があります。",
     "favourited_by": "お気に入りしたユーザー",
     "filter_hidden_phrase": "フィルター",
     "filter_show_anyway": "とにかく表示",
+    "gif": "GIF",
     "img_alt": {
       "ALT": "ALT",
       "desc": "説明文",
@@ -708,6 +725,7 @@
     "add_emojis": "絵文字を追加",
     "add_media": "画像、動画、音声ファイルを追加",
     "add_publishable_content": "公開するコンテンツを追加",
+    "add_thread_item": "スレッドに項目を追加",
     "change_content_visibility": "公開範囲を変更",
     "change_language": "言語を変更",
     "emoji": "絵文字",
@@ -717,6 +735,8 @@
     "open_editor_tools": "エディタツール",
     "pick_an_icon": "アイコンの選択",
     "publish_failed": "投稿の再公開時にエディタ上部のエラーメッセージを閉じる",
+    "remove_thread_item": "スレッドから項目を削除",
+    "start_thread": "スレッドを開始",
     "toggle_bold": "太字",
     "toggle_code_block": "コードブロック",
     "toggle_italic": "斜体"
