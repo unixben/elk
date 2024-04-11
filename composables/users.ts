@@ -189,6 +189,14 @@ export function getExpandMediaByDefault(account: mastodon.v1.AccountCredentials)
 
 /**
  * @param account
+ * @returns `true` when user selected "Auto-play animated GIFs" preference
+ */
+export function getAutoplayGifsByDefault(account: mastodon.v1.AccountCredentials) {
+  return accountPreferencesMap.get(account.acct)?.['reading:autoplay:gifs'] ?? false
+}
+
+/**
+ * @param account
  * @returns `true` when user selected "Always hide media" as Media Display preference
  */
 export function getHideMediaByDefault(account: mastodon.v1.AccountCredentials) {
