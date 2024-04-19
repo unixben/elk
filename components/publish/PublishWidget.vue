@@ -305,6 +305,12 @@ function stopQuestionMarkPropagation(e: KeyboardEvent) {
                 @keydown="stopQuestionMarkPropagation"
                 @keydown.esc.prevent="editor?.commands.blur()"
               />
+
+              <CommonTooltip placement="top" :content="t('tooltip.remove_thread_item')" absolute right-1>
+                <button btn-action-icon :aria-label="t('tooltip.remove_thread_item')" @click="addOrRemoveItem">
+                  <div i-ri:chat-delete-line />
+                </button>
+              </CommonTooltip>
             </div>
 
             <div v-if="isUploading" flex gap-1 items-center text-sm p1 text-primary>
