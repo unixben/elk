@@ -1,6 +1,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 import { useMagicSequence } from '~/composables/magickeys'
 import { currentUser, getInstanceDomain } from '~/composables/users'
+import { openCommandPanel } from '~/composables/dialog'
 
 export default defineNuxtPlugin(({ $scrollToTop }) => {
   const keys = useMagicKeys()
@@ -34,7 +35,7 @@ export default defineNuxtPlugin(({ $scrollToTop }) => {
       openPublishDialog('dialog', getDefaultDraftItem())
     }
   }
-  whenever(logicAnd(isAuthenticated, notUsingInput, keys.c), defaultPublishDialog)
+  whenever(logicAnd(isAuthenticated, notUsingInput, useMagicSequence(['c'])), defaultPublishDialog)
 
   const instanceDomain = currentInstance.value ? getInstanceDomain(currentInstance.value) : 'm.webtoo.ls'
   whenever(logicAnd(notUsingInput, useMagicSequence(['g', 'h'])), () => navigateTo('/home'))
@@ -49,7 +50,8 @@ export default defineNuxtPlugin(({ $scrollToTop }) => {
   whenever(logicAnd(isAuthenticated, notUsingInput, useMagicSequence(['g', 'i'])), () => navigateTo('/lists'))
   whenever(logicAnd(notUsingInput, useMagicSequence(['g', 's'])), () => navigateTo('/settings'))
   whenever(logicAnd(isAuthenticated, notUsingInput, useMagicSequence(['g', 'p'])), () => navigateTo(`/${instanceDomain}/@${currentUser.value?.account.username}`))
-  whenever(logicAnd(notUsingInput, computed(() => keys.current.size === 1), keys['/']), () => navigateTo('/search'))
+  whenever(logicAnd(notUsingInput, useMagicSequence(['g', '/'])), () => navigateTo('/search'))
+  whenever(logicAnd(notUsingInput, useMagicSequence(['/'])), () => openCommandPanel())
 
   const toggleFavouriteActiveStatus = () => {
     // TODO: find a better solution than clicking buttons...

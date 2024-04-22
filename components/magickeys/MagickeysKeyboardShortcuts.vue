@@ -13,7 +13,7 @@ interface ShortcutDef {
 
 interface ShortcutItem {
   description: string
-  shortcut: ShortcutDef
+  shortcuts: ShortcutDef[]
 }
 
 interface ShortcutItemGroup {
@@ -30,63 +30,63 @@ const shortcutItemGroups = computed<ShortcutItemGroup[]>(() => [
     items: [
       {
         description: t('magic_keys.groups.navigation.shortcut_help'),
-        shortcut: { keys: ['?'], isSequence: false },
+        shortcuts: [{ keys: ['?'], isSequence: false }],
       },
       // {
       //   description: t('magic_keys.groups.navigation.next_status'),
-      //   shortcut: { keys: ['j'], isSequence: false },
+      //   shortcuts: [{ keys: ['j'], isSequence: false }],
       // },
       // {
       //   description: t('magic_keys.groups.navigation.previous_status'),
-      //   shortcut: { keys: ['k'], isSequence: false },
+      //   shortcuts: [{ keys: ['k'], isSequence: false }],
       // },
       {
         description: t('magic_keys.groups.navigation.go_to_search'),
-        shortcut: { keys: ['/'], isSequence: false },
+        shortcuts: [{ keys: ['g', '/'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_home'),
-        shortcut: { keys: ['g', 'h'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'h'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_notifications'),
-        shortcut: { keys: ['g', 'n'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'n'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_conversations'),
-        shortcut: { keys: ['g', 'c'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'c'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_favourites'),
-        shortcut: { keys: ['g', 'f'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'f'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_bookmarks'),
-        shortcut: { keys: ['g', 'b'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'b'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_explore'),
-        shortcut: { keys: ['g', 'e'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'e'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_local'),
-        shortcut: { keys: ['g', 'l'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'l'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_federated'),
-        shortcut: { keys: ['g', 't'], isSequence: true },
+        shortcuts: [{ keys: ['g', 't'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_lists'),
-        shortcut: { keys: ['g', 'i'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'i'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_settings'),
-        shortcut: { keys: ['g', 's'], isSequence: true },
+        shortcuts: [{ keys: ['g', 's'], isSequence: true }],
       },
       {
         description: t('magic_keys.groups.navigation.go_to_profile'),
-        shortcut: { keys: ['g', 'p'], isSequence: true },
+        shortcuts: [{ keys: ['g', 'p'], isSequence: true }],
       },
     ],
   },
@@ -95,34 +95,34 @@ const shortcutItemGroups = computed<ShortcutItemGroup[]>(() => [
     items: [
       {
         description: t('magic_keys.groups.actions.search'),
-        shortcut: { keys: [modifierKeyName.value, 'k'], isSequence: false },
+        shortcuts: [{ keys: [modifierKeyName.value, 'k'], isSequence: false }, { keys: ['/'], isSequence: false }],
       },
       {
         description: t('magic_keys.groups.actions.command_mode'),
-        shortcut: { keys: [modifierKeyName.value, '/'], isSequence: false },
+        shortcuts: [{ keys: [modifierKeyName.value, '/'], isSequence: false }],
       },
       {
         description: t('magic_keys.groups.actions.compose'),
-        shortcut: { keys: ['c'], isSequence: false },
+        shortcuts: [{ keys: ['c'], isSequence: false }],
       },
       {
         description: t('magic_keys.groups.actions.show_new_items'),
-        shortcut: { keys: ['.'], isSequence: false },
+        shortcuts: [{ keys: ['.'], isSequence: false }],
       },
       {
         description: t('magic_keys.groups.actions.favourite'),
-        shortcut: { keys: ['f'], isSequence: false },
+        shortcuts: [{ keys: ['f'], isSequence: false }],
       },
       {
         description: t('magic_keys.groups.actions.boost'),
-        shortcut: { keys: ['b'], isSequence: false },
+        shortcuts: [{ keys: ['b'], isSequence: false }],
       },
     ],
   },
-  {
-    name: t('magic_keys.groups.media.title'),
-    items: [],
-  },
+  // {
+  //   name: t('magic_keys.groups.media.title'),
+  //   items: [],
+  // },
 ])
 </script>
 
@@ -151,13 +151,16 @@ const shortcutItemGroups = computed<ShortcutItemGroup[]>(() => [
             {{ item.description }}
           </div>
           <div>
-            <template
-              v-for="(key, idx) in item.shortcut.keys"
-              :key="idx"
-            >
-              <span v-if="idx !== 0" mx1 text-sm op80>{{ item.shortcut.isSequence ? $t('magic_keys.sequence_then') : '+' }}</span>
-              <code class="px2 md:px1.5 lg:px2 lg:px2 py0 lg:py-0.5" rounded bg-code border="px $c-border-code" shadow-sm my1 font-mono font-600>{{ key }}</code>
-            </template>
+            <span v-for="(shortcut, shortcutIndex) in item.shortcuts" :key="shortcutIndex">
+              <template
+                v-for="(key, idx) in shortcut.keys"
+                :key="idx"
+              >
+                <span v-if="shortcutIndex !== 0">, </span>
+                <span v-if="idx !== 0" mx1 text-sm op80>{{ shortcut.isSequence ? $t('magic_keys.sequence_then') : '+' }}</span>
+                <code class="px2 md:px1.5 lg:px2 lg:px2 py0 lg:py-0.5" rounded bg-code border="px $c-border-code" shadow-sm my1 font-mono font-600>{{ key }}</code>
+              </template>
+            </span>
           </div>
         </div>
       </div>
