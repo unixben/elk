@@ -75,5 +75,8 @@ export default defineNuxtPlugin(({ $scrollToTop }) => {
       ?.querySelector<HTMLElement>('button#elk_show_new_items')
       ?.click()
   }
-  whenever(logicAnd(isAuthenticated, notUsingInput, keys['.']), showNewItems)
+  whenever(logicAnd(isAuthenticated, notUsingInput, keys['.']), () => {
+    showNewItems()
+    ;($scrollToTop as () => void)()
+  })
 })
