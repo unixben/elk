@@ -9,7 +9,6 @@ import {
   isFavouritedBoostedByDialogOpen,
   isKeyboardShortcutsDialogOpen,
   isMediaPreviewOpen,
-  isPreviewHelpOpen,
   isPublishDialogOpen,
   isReportDialogOpen,
   isSigninDialogOpen,
@@ -57,9 +56,6 @@ function handleFavouritedBoostedByClose() {
   <template v-if="isHydrated">
     <ModalDialog v-model="isSigninDialogOpen" py-4 px-8 max-w-125>
       <UserSignIn />
-    </ModalDialog>
-    <ModalDialog v-model="isPreviewHelpOpen" keep-alive max-w-125>
-      <HelpPreview @close="closePreviewHelp()" />
     </ModalDialog>
     <ModalDialog
       v-model="isPublishDialogOpen"
